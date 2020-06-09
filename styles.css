@@ -1,0 +1,90 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gotu&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,669;0,700;0,800;0,900;1,400;1,500;1,600;1,669;1,700;1,800;1,900&display=swap');
+</style>
+html {
+      background-color: rgb(0, 142, 248);
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    background-color: rgb(204, 233, 255);
+}
+
+/* navbar styling! */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar a {
+    float: right;
+    font-size: 16px;
+    color: #C8E8FF;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+td.collegelink {
+    width: 25vw;
+    border-style: none;
+    text-align: center;
+}
+/* dropdown things! */
+div.title {
+    float: left;
+    font-size: 20px;
+    color: #C8E8FF;
+    text-align: center;
+    padding: 11.22px 21px;
+    text-decoration: none;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: #C8E8FF;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #C8E8FF;
+    color: black;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #595959;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: #C8E8FF;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #C8E8FF;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
