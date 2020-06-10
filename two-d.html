@@ -4,9 +4,59 @@
         <meta charset="UTF-8">
         <link rel = "stylesheet" id = "cssfile" href="styles.css">
         <link rel="shortcut icon" href="icon.jpg" type="image/x-icon"/>
+        <link href='https://fonts.googleapis.com/css?family=Archivo' rel='stylesheet'>
         <title>2D | CALC FINAL</title>
         <script src = "scripts.js"></script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <style>
+        .slidecontainer {
+          width: 100%;
+        }
+
+        .slider {
+          -webkit-appearance: none;
+          width: 50%;
+          height: 25px;
+          background: #d3d3d3;
+          outline: none;
+          opacity: 0.7;
+          -webkit-transition: .2s;
+          transition: opacity .2s;
+          position: fixed;
+          top: 732px;
+        }
+
+        .slider:hover {
+          opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 25px;
+          height: 25px;
+          background: #4CAF50;
+          cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+          width: 25px;
+          height: 25px;
+          background: #4CAF50;
+          cursor: pointer;
+        }
+        #rect {
+          position: fixed;
+          top: 685px;
+          font-size: 25px;
+        }
+        #number {
+          position: fixed;
+          top: 685px;
+          left: 350px;
+          font-size: 25px;
+        }
+        </style>
     </head>
     <body>
         <!-- navigation bar -->
@@ -23,13 +73,47 @@
         </div>
         <!-- form with options and such -->
         <form>
-            
+            <input type="range" min="1" max="250" value ="1" class="slider" id="mySlider" oninput="Plotly.newPlot(CHART, graph, moreRects())">
         </form>
         <!-- div for the graph/chart -->
-        
+        <h1 id="rect" style="font-family:Archivo">NUMBER OF RECTANGLES: </h1>
+        <h1 id="number" style="font-family:Archivo"></h1>
         <!-- if using plotly.js; https://plotly.com/javascript/getting-started/ -->
-        <div id = "myChart0" style = "width: 600px; height:250px"></div>
-        
+        <div id = "myChart0" style = "width: 600px; height:600px"></div>
+        <script>
+          CHART = document.getElementById('myChart0');
+          document.getElementById('number').innerHTML = document.getElementById('mySlider').value;
+          var trace = {
+            x: [0,1,2,3,4,5,6],
+            y: [0,1,4,9,16,25,36],
+            mode: 'lines',
+            type: 'scatter',
+            line: {shape: 'spline', smoothing: 1.3}
+          };
+          var graph = [trace];
+          function moreRects() {
+            var n = document.getElementById('mySlider').value;
+            document.getElementById('number').innerHTML = document.getElementById('mySlider').value;
+            var thisObject = {};
+            thisObject.shapes = [];
+            for(i = 0; i < n; i++){
+              thisObject.shapes.push({
+                type: 'rect',
+                xref: 'x',
+                yref: 'y',
+                x0: 6/n * (i),
+                y0: 0,
+                x1: 6/n * i + 6/n,
+                y1: (6/n * i + 6/n)*(6/n * i + 6/n),
+                fillcolor: 'green',
+                opacity: 0.5,
+                line: {width: 0}
+              });
+            }
+            return thisObject;
+          }
+          Plotly.newPlot(CHART, graph, moreRects(1));
+        </script>
         <!-- if using chart.js; chartjs.org/docs/latest/-->
         <canvas id = "myChart1" width = "600px" height = "250px"></canvas>
         
