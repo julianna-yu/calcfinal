@@ -168,6 +168,7 @@
           function moreRects(lb,ub,xMin,xMax,yMin,yMax,expr) {
             var n = document.getElementById('numrect').value;
             var type = document.getElementById('type').value;
+<<<<<<< HEAD
             var thisObject = {};
             thisObject.shapes = [];
             if(type == "rightEnd"){
@@ -266,6 +267,60 @@
                 opacity: 0.5,
                 line: {width: 0}
               });
+=======
+            var thisObject = {};
+            thisObject.shapes = [];
+            if(type == "rightEnd"){
+              for(i = 0; i < n; i++){
+                let scope = {x: (ub-lb)/n * i + (ub-lb)/n + lb}
+                thisObject.shapes.push({
+                  type: 'rect',
+                  xref: 'x',
+                  yref: 'y',
+                  x0: (ub-lb)/n * i + lb,
+                  y0: 0,
+                  x1: (ub-lb)/n * i + (ub-lb)/n + lb,
+                  y1: expr.evaluate(scope),
+                  fillcolor: 'green',
+                  opacity: 0.5,
+                  line: {width: 0}
+                });
+              }
+            }
+            else if(type == "leftEnd"){
+              for(i = 0; i < n; i++){
+                let scope = {x: (ub-lb)/n * i + lb}
+                thisObject.shapes.push({
+                  type: 'rect',
+                  xref: 'x',
+                  yref: 'y',
+                  x0: (ub-lb)/n * i + lb,
+                  y0: 0,
+                  x1: (ub-lb)/n * i + (ub-lb)/n + lb,
+                  y1: expr.evaluate(scope),
+                  fillcolor: 'green',
+                  opacity: 0.5,
+                  line: {width: 0}
+                });
+              }
+            }
+            else{
+              for(i = 0; i < n; i++){
+                let scope = {x: (((ub-lb)/n * i + lb) + ((ub-lb)/n * i + (ub-lb)/n + lb))/2}
+                thisObject.shapes.push({
+                  type: 'rect',
+                  xref: 'x',
+                  yref: 'y',
+                  x0: (ub-lb)/n * i + lb,
+                  y0: 0,
+                  x1: (ub-lb)/n * i + (ub-lb)/n + lb,
+                  y1: expr.evaluate(scope),
+                  fillcolor: 'green',
+                  opacity: 0.5,
+                  line: {width: 0}
+                });
+              }
+>>>>>>> a35aef196ef9a279f4556df30812ac92a16e10f2
             }
             return thisObject;
           }
