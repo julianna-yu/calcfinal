@@ -95,3 +95,93 @@ div.heading {
     position: relative;
     text-align: center;
 }
+
+/* form styling */
+table {
+    width: 100%;
+}
+td.form {
+    width: 40%;
+}
+td.graph {
+    width: 60%;
+}
+#form {
+    text-align: center;
+    overflow: auto;
+}
+label {
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 400;
+}
+input {
+    text-align: center;
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    
+}
+input[type \= "submit"] {
+    background-color: black;
+}
+input:focus {
+    background-color: #C8E8FF;
+}
+#eq, #type, #numrect{
+    width: 80%;
+}
+#lowerbound, #upperbound {
+    width: 40%;
+}
+select {
+/*    width: 30%;*/
+    text-align-last: center;
+    text-align: center;
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+/* chart styling */
+/*
+#graph-container {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    float: right;
+    
+}
+*/
+/* slider */
+
+.slider {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 70%;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4cb4ff;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
