@@ -106,6 +106,34 @@ div.description {
     text-align: center;
     width: 75%;
 }
+div.description1 {
+    font-family: 'Raleway', sans-serif;   
+    font-weight: 200;
+    font-size: 23px;
+    text-decoration: none; 
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    width: 75%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #C8E8FF;
+    padding: 15px;
+}
+div.note {
+    font-family: 'Raleway', sans-serif;   
+    font-weight: 200;
+    font-size: 15px;
+    text-decoration: none; 
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    width: 50%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #C8E8FF;
+    padding: 15px;
+}
 div.subtitle {
     font-family: 'Raleway', sans-serif;   
     font-weight: 300;
@@ -255,3 +283,21 @@ width: 40%;
 }
 )
 */
+
+a, a:active {
+    color: black;
+}
+.animation {
+    width: 80%;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.caption {
+    width: 80%;
+    text-align: right;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
