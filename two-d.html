@@ -8,6 +8,9 @@
         <title>2D | CALC FINAL</title>
         <script src="https://unpkg.com/mathjs@7.0.1/dist/math.min.js"></script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
     </head>
     <body>
         <!-- navigation bar -->
@@ -20,6 +23,10 @@
         <!-- header -->
         <div class = "heading">
             2D REPRESENTATION
+        </div>
+        <br/>
+        <div class = "description">
+            This program utilizes the inputted function, bounds, type of Riemann sum and number of rectangles and creates a visual representation of the graph where the area of each rectangle is a term in the Riemann sum.  
         </div>
         <!-- form with options and such -->
         <br/>
@@ -61,6 +68,8 @@
                 </td>
             </tr>
         </table>
+        <div class = "subtitle"></div>
+        <span id = "math"></span>
         <!-- if using plotly.js; https://plotly.com/javascript/getting-started/ -->
         <script>
           function changeSlideToText(){
@@ -121,6 +130,8 @@
             var type = document.getElementById('type').value;
             var thisObject = {};
             thisObject.shapes = [];
+            var calcValue = 0;
+            var actValue = 0;
             if(type == "rightEnd"){
               for(i = 0; i < n; i++){
                 let scope = {x: (ub-lb)/n * i + (ub-lb)/n + lb}
@@ -138,6 +149,7 @@
                     {width: 1,
                     color: '#0089ff'}
                 });
+                calcValue = calcValue + expr.evaluate(scope) * ((ub-lb)/n);
               }
             }
             else if(type == "leftEnd"){
@@ -157,6 +169,7 @@
                     {width: 1,
                     color: '#0089ff'}
                 });
+                calcValue = calcValue + expr.evaluate(scope) * ((ub-lb)/n);
               }
             }
             else{
@@ -176,10 +189,34 @@
                     {width: 1,
                     color: '#0089ff'}
                 });
+                calcValue = calcValue + (expr.evaluate(scope) * ((ub-lb)/n));
               }
             }
             thisObject.xaxis = {range: [xMin-2,xMax+2]}
             thisObject.yaxis = {range: [yMin-2,yMax+2]}
+            var lb = document.getElementById('lowerbound').value
+            var ub = document.getElementById('upperbound').value
+              //MY ATTEMPT AT CALCULATING INTEGRALS
+//            for(i = 0; i < n; i = i + 0.0001){
+//                let scope = {x: (((ub-lb)/n * i + lb) + ((ub-lb)/n * i + (ub-lb)/n + lb))/2}
+//                const a = math.bignumber((ub-lb)/n * 0.0001);
+//                actValue = actValue + (expr.evaluate(scope) *((ub-lb)/n * 0.0001));
+//              }
+            calcValue = calcValue.toFixed(3);
+            var str = "$$\\sum_{i=1}^{"
+            var ns = n.toString();
+            var str1 = "} f(x_i)(\\Delta x) = "
+//            var x = (ub-lb)/n
+//            var xs = x.toString();
+            var calcValue_s = calcValue.toString();
+            var str2 = " \\approx \\int_{";
+            var lbs = lb.toString();
+            var str3 = "}^{"
+            var ubs = ub.toString();
+            var str4 = "}f(x)dx$$"
+            var eq = str.concat(ns, str1, calcValue_s,str2, lbs, str3, ubs, str4);
+              console.log(eq);
+            document.getElementById('math').innerHTML = eq;
             return thisObject;
           }
           document.getElementById('form').onsubmit = function (event){
@@ -187,92 +224,6 @@
             draw()
           }
           draw()
-        </script>
-        <!-- change num of rectangles -->
-        <script>
-        document.getElementById('number').innerHTML = document.getElementById('mySlider').value;
-          var trace = {
-            x: [0,1,2,3,4,5,6],
-            y: [0,1,4,9,16,25,36],
-            mode: 'lines',
-            type: 'scatter',
-            line: {shape: 'spline', smoothing: 1.3}
-          };
-          var graph = [trace];
-          function changeRects() {
-            var n = document.getElementById('mySlider').value;
-            document.getElementById('number').innerHTML = document.getElementById('mySlider').value;
-            var thisObject = {};
-            thisObject.shapes = [];
-            for(i = 0; i < n; i++){
-              thisObject.shapes.push({
-                type: 'rect',
-                xref: 'x',
-                yref: 'y',
-                x0: 6/n * (i),
-                y0: 0,
-                x1: 6/n * i + 6/n,
-                y1: (6/n * i + 6/n)*(6/n * i + 6/n),
-                fillcolor: 'green',
-                opacity: 0.5,
-                line: {width: 0}
-              });
-            var thisObject = {};
-            thisObject.shapes = [];
-            if(type == "rightEnd"){
-              for(i = 0; i < n; i++){
-                let scope = {x: (ub-lb)/n * i + (ub-lb)/n + lb}
-                thisObject.shapes.push({
-                  type: 'rect',
-                  xref: 'x',
-                  yref: 'y',
-                  x0: (ub-lb)/n * i + lb,
-                  y0: 0,
-                  x1: (ub-lb)/n * i + (ub-lb)/n + lb,
-                  y1: expr.evaluate(scope),
-                  fillcolor: 'green',
-                  opacity: 0.5,
-                  line: {width: 0}
-                });
-              }
-            }
-            else if(type == "leftEnd"){
-              for(i = 0; i < n; i++){
-                let scope = {x: (ub-lb)/n * i + lb}
-                thisObject.shapes.push({
-                  type: 'rect',
-                  xref: 'x',
-                  yref: 'y',
-                  x0: (ub-lb)/n * i + lb,
-                  y0: 0,
-                  x1: (ub-lb)/n * i + (ub-lb)/n + lb,
-                  y1: expr.evaluate(scope),
-                  fillcolor: 'green',
-                  opacity: 0.5,
-                  line: {width: 0}
-                });
-              }
-            }
-            else{
-              for(i = 0; i < n; i++){
-                let scope = {x: (((ub-lb)/n * i + lb) + ((ub-lb)/n * i + (ub-lb)/n + lb))/2}
-                thisObject.shapes.push({
-                  type: 'rect',
-                  xref: 'x',
-                  yref: 'y',
-                  x0: (ub-lb)/n * i + lb,
-                  y0: 0,
-                  x1: (ub-lb)/n * i + (ub-lb)/n + lb,
-                  y1: expr.evaluate(scope),
-                  fillcolor: 'green',
-                  opacity: 0.5,
-                  line: {width: 0}
-                });
-              }
-            }
-            return thisObject;
-          }
-          Plotly.newPlot(CHART, graph, moreRects(1));
         </script>
     </body>
 </html>

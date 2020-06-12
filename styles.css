@@ -96,6 +96,27 @@ div.heading {
     text-align: center;
 }
 
+div.description {
+    font-family: 'Raleway', sans-serif;   
+    font-weight: 200;
+    font-size: 20px;
+    text-decoration: none; 
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    width: 75%;
+}
+div.subtitle {
+    font-family: 'Raleway', sans-serif;   
+    font-weight: 300;
+    font-size: 30px;
+    /* offset-x | offset-y | blur-radius | color */
+    text-shadow: 1px 1px 10px #59b9ff;
+    text-decoration: none; 
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
 /* form styling */
 table {
     width: 100%;
@@ -184,4 +205,23 @@ select {
   height: 25px;
   background: #4CAF50;
   cursor: pointer;
+}
+/* other styling */
+table.math {
+    width: 60%;
+    position: absolute;
+    left: 20%;
+/*    transform: translate(-50%, -50%)*/
+}
+td.math {
+    width: 50%;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    padding: 6px 10px;
+    margin: 8px 0;
+    text-align: center;
+}
+#math {
+    text-align: center;
+    font-size: 25px;
 }
