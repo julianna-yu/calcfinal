@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" id = "cssfile" href="styles.css">
+        <link rel="shortcut icon" href="icon.jpg" type="image/x-icon"/>
+        <link href='https://fonts.googleapis.com/css?family=Archivo' rel='stylesheet'>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
+        <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+        <script type="text/javascript">
+          LatexIT.add('p',true);
+        </script>
+        <title>2D | CALC FINAL</title>
+        <script src="https://unpkg.com/mathjs@7.0.1/dist/math.min.js"></script>
+        <script src = "scripts.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <style>
+          img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          button {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          #myChart0{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          #mySlider{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          #next{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .slidecontainer {
+            width: 100%;
+          }
+
+          .slider {
+            -webkit-appearance: none;
+            width: 600px;
+            height: 25px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+          }
+
+          .slider:hover {
+            opacity: 1;
+          }
+
+          .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #44b1ff;
+            cursor: pointer;
+          }
+
+          .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #4CAF50;
+            cursor: pointer;
+          }
+
+        </style>
+    </head>
+    <body>
+        <!-- navigation bar -->
+        <div class = "navbar">
+            <div class = "title">Rohan & Julianna's AP Calculus Final Project</div>
+            <a href="three-d.html">3D Representation</a>
+            <a href="two-d.html">2D Representation</a>
+            <a href="index.html">Home</a>
+        </div>
+        <br/>
+        <!-- header -->
+        <div class = "heading">
+            2D REPRESENTATION
+        </div>
+        <h1 style="text-align: center; font-family: 'Nunito Sans', sans-serif;"><strong>What Is a Riemann Sum?</strong></h1>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">A Riemann Sum is simply an approximation of the area under a curve. Let's say that we want to find the area under this curve.</p>
+        <img src="graph1.png"></img>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">We may not know how to find this area, but we know that the area can approximately equal the area of the rectangle<br>with same height and width.</p>
+        <img src="graph2.png"></img>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">Of course, the area of this rectangle is an overapproximation. So how do we make our approximation more accurate?<br>We just add more rectangles (while decreasing the width and height)!</p>
+        <img src="graph3.png"></img>
+        <img src="graph4.png"></img>
+        <img src="graph5.png"></img>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">The sum of the areas of the rectangles seem to approximate the area under the curve better and better, and this<br> is exactly what the Riemann Sum is, the sum of the areas of these rectangles.</p>
+        <br>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;"><strong>What are the different types of Riemann Sums?</strong></p>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">In our example, we made a deliberate choice to place the height of our function at the right endpoint of our<br>rectangles. But what if we chose to use the left endpoint?<br>This is what it would look like:</p>
+        <img src="graph6.png"></img>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">It looks different than the right endpoint approximation, but it still looks like a decent approximation of the area. But now it's clearly <br> an underapproximation. In fact, if the curve is increasing on the interval for which you want to find the area, a right endpoint Riemann sum<br>will always overapproximate the area, whereas a left endpoint Riemann Sum will always underapproximate the area.<br>Can you see why?</p>
+        <img id="underOver" src="graph5.png"></img>
+        <script>
+        function changeImage(){
+          if (document.getElementById('underOver').src.match("graph5.png")) document.getElementById('underOver').src = "graph6.png";
+          else document.getElementById('underOver').src = "graph5.png";
+        }
+        </script>
+        <button onclick="changeImage()">Change</button>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">And if the curve is decreasing then a right endpoint Riemann Sum will underapproximate, <br>whereas the left-endpoint Riemann Sum will overapproximate.</p>
+        <img id="overUnder" src="graph7.png"></img>
+        <script>
+        function changeImage2(){
+          if (document.getElementById('overUnder').src.match("graph7.png")) document.getElementById('overUnder').src = "graph8.png";
+          else document.getElementById('overUnder').src = "graph7.png";
+        }
+        </script>
+        <button onclick="changeImage2()">Change</button>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">A Riemann Sum doesn't need not be just rectangles. You can create a Riemann Sum using <br> trapezoids to approximate the area as well!<br>The width of each rectangle need not be the same either, but keeping the width uniform is easy to work with.</p>
+        <img src="graph9.png"></img>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">There's also the midpoint Riemann Sum, which is where the height of your rectangle is equal to<br> f(0.5 × (x1 + x2)) where x1 and x2 are the x-coordinates of your rectangle and f is the curve.</p>
+        <img src="graph10.png"></img>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">So what happens when you have infinitely many rectangles?</p>
+        <form>
+            <input type="range" min="0" max="250" value ="0" class="slider" id="mySlider" oninput="Plotly.newPlot(CHART, graph, moreRects())">
+        </form>
+        <div id = "myChart0" style = "width: 600px; height:600px;"></div>
+        <script>
+          CHART = document.getElementById('myChart0');
+          var trace = {
+            x: [1,2,3,4,5,6],
+            y: [1.5,3,5.5,9,13.5,19],
+            mode: 'lines',
+            type: 'scatter',
+            line: {shape: 'spline', smoothing: 1.3},
+            marker: { color: 'black', line: {color: 'black'}}
+          };
+          var graph = [trace];
+          function moreRects() {
+            var n = document.getElementById('mySlider').value;
+            var thisObject = {};
+            thisObject.shapes = [];
+            for(i = 0; i < n; i++){
+              thisObject.shapes.push({
+                type: 'rect',
+                xref: 'x',
+                yref: 'y',
+                x0: 5/n * (i) + 1,
+                y0: 0,
+                x1: 5/n * i + 5/n + 1,
+                y1: 0.5*(5/n * i + 5/n + 1)*(5/n * i + 5/n + 1)+1,
+                fillcolor: '#44b1ff',
+                opacity: 0.5,
+                line: {width: 1, color: '#0089ff'}
+              });
+            }
+            thisObject.xaxis = {range: [0,7]}
+            thisObject.yaxis = {range: [0,20]}
+            return thisObject;
+          }
+          Plotly.newPlot(CHART, graph, moreRects(1));
+        </script>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">As the number of rectangles goes to infinity, the Riemann Sum is equal to the area under the curve!<br>This becomes our first notion of the definite integral, the area between the curve and the x-axis.</p>
+        <br>
+        <br>
+        <form action="two-d.html">
+          <input id="next" type="submit" value="Try it yourself!" />
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;"><em>*Inspiration taken from Khan Academy*</em></p>
+      </body>
+  </html>
