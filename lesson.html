@@ -74,7 +74,13 @@
             background: #4CAF50;
             cursor: pointer;
           }
-
+            p {
+                width: 90%;
+                display: block;
+    margin-left: auto;
+    margin-right: auto;
+                 text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;
+            }
         </style>
     </head>
     <body>
@@ -88,20 +94,20 @@
         <br/>
         <!-- header -->
         <div class = "heading">What Is a Riemann Sum?</div>
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">A Riemann Sum is simply an approximation of the area under a curve. Let's say that we want to find the area under this curve.</p>
+        <p style=" ">A Riemann Sum is simply an approximation of the area under a curve. Let's say that we want to find the area under this curve.</p>
         <img src="graph1.png"> 
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">We may not know how to find this area, but we know that the area can approximately equal the area of the rectangle<br>with same height and width.</p>
+        <p style=" ">We may not know how to find this area, but we know that the area can approximately equal the area of the rectangle<br>with same height and width.</p>
         <img src="graph2.png"> 
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">Of course, the area of this rectangle is an overapproximation. So how do we make our approximation more accurate?<br>We just add more rectangles (while decreasing the width and height)!</p>
+        <p style=" ">Of course, the area of this rectangle is an overapproximation. So how do we make our approximation more accurate?<br>We just add more rectangles (while decreasing the width and height)!</p>
         <img src="graph3.png"> 
         <img src="graph4.png"> 
         <img src="graph5.png"> 
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">The sum of the areas of the rectangles seem to approximate the area under the curve better and better, and this<br> is exactly what the Riemann Sum is, the sum of the areas of these rectangles.</p>
+        <p style=" ">The sum of the areas of the rectangles seem to approximate the area under the curve better and better, and this<br> is exactly what the Riemann Sum is, the sum of the areas of these rectangles.</p>
         <br>
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;"><strong>What are the different types of Riemann Sums?</strong></p>
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">In our example, we made a deliberate choice to place the height of our function at the right endpoint of our<br>rectangles. But what if we chose to use the left endpoint?<br>This is what it would look like:</p>
+        <p style=" "><strong>What are the different types of Riemann Sums?</strong></p>
+        <p style=" ">In our example, we made a deliberate choice to place the height of our function at the right endpoint of our<br>rectangles. But what if we chose to use the left endpoint?<br>This is what it would look like:</p>
         <img src="graph6.png"> 
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">It looks different than the right endpoint approximation, but it still looks like a decent approximation of the area. But now it's clearly <br> an underapproximation. In fact, if the curve is increasing on the interval for which you want to find the area, a right endpoint Riemann sum<br>will always overapproximate the area, whereas a left endpoint Riemann Sum will always underapproximate the area.<br>Can you see why?</p>
+        <p style=" ">It looks different than the right endpoint approximation, but it still looks like a decent approximation of the area. But now it's clearly <br> an underapproximation. In fact, if the curve is increasing on the interval for which you want to find the area, a right endpoint Riemann sum<br>will always overapproximate the area, whereas a left endpoint Riemann Sum will always underapproximate the area.<br>Can you see why?</p>
         <img id="underOver" src="graph5.png"> 
         <script>
         function changeImage(){
@@ -110,7 +116,7 @@
         }
         </script>
         <button onclick="changeImage()">Change</button>
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">And if the curve is decreasing then a right endpoint Riemann Sum will underapproximate, <br>whereas the left-endpoint Riemann Sum will overapproximates.</p>
+        <p style=" ">And if the curve is decreasing then a right endpoint Riemann Sum will underapproximate, <br>whereas the left-endpoint Riemann Sum will overapproximates.</p>
         <img id="overUnder" src="graph7.png">
         <script>
         function changeImage2(){
@@ -119,11 +125,11 @@
         }
         </script>
         <button onclick="changeImage2()">Change</button>
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">A Riemann Sum doesn't need not be just rectangles. You can create a Riemann Sum using <br> trapezoids to approximate the area as well!<br>The width of each rectangle need not be the same either, but keeping the width uniform is easy to work with.</p>
+        <p style=" ">A Riemann Sum doesn't need not be just rectangles. You can create a Riemann Sum using <br> trapezoids to approximate the area as well!<br>The width of each rectangle need not be the same either, but keeping the width uniform is easy to work with.</p>
         <img src="graph9.png">
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">There's also the midpoint Riemann Sum, which is where the height of your rectangle is equal to<br> f(0.5 × (x1 + x2)) where x1 and x2 are the x-coordinates of your rectangle and f is the curve.</p>
+        <p style=" ">There's also the midpoint Riemann Sum, which is where the height of your rectangle is equal to<br> f(0.5 × (x1 + x2)) where x1 and x2 are the x-coordinates of your rectangle and f is the curve.</p>
         <img src="graph10.png">
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">So what happens when you have infinitely many rectangles?</p>
+        <p style=" ">So what happens when you have infinitely many rectangles?</p>
         <form>
             <input type="range" min="0" max="250" value ="0" class="slider" id="mySlider" oninput="Plotly.newPlot(CHART, graph, moreRects())">
         </form>
@@ -163,7 +169,7 @@
           }
           Plotly.newPlot(CHART, graph, moreRects(1));
         </script>
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;">As the number of rectangles goes to infinity, the Riemann Sum is equal to the area under the curve!<br>This becomes our first notion of the definite integral, the area between the curve and the x-axis.</p>
+        <p style=" ">As the number of rectangles goes to infinity, the Riemann Sum is equal to the area under the curve!<br>This becomes our first notion of the definite integral, the area between the curve and the x-axis.</p>
         <br>
         <br>
         <form action="two-d.html">
@@ -173,10 +179,7 @@
         <br>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <p style="text-align:center; font-family: 'Nunito Sans', sans-serif; font-size: 25px;"><em>*Inspiration taken from Khan Academy*</em></p>
+
+        <p style=" "><em>*Inspiration taken from Khan Academy*</em></p>
       </body>
   </html>
