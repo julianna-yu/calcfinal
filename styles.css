@@ -225,3 +225,33 @@ td.math {
     text-align: center;
     font-size: 25px;
 }
+/* Tooltip container 
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; 
+}
+
+/* Tooltip text 
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+width: 40%;
+  top: 100%;
+    left: -100%;
+    width: 400px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+)
+*/
